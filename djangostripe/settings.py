@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'payments.apps.PaymentsConfig', 
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,8 +119,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # new
+
+# for django < 3.1
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # new
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51MGPnmACvCGI7S3SEDxEraL67ByQ24nRKFOB08btz8bll9ZC6fcjRrUkeqdMknkinkokLNIf06uQnvVf9hfZ4U0c00OzHdp57Z'
+STRIPE_SECRET_KEY = 'sk_test_51MGPnmACvCGI7S3SBwCXuloJOBWIjNjdofkucSbG7z1OTxOEGTBRvUpdlVsiaAUlsypVDa8eekpNAxMDwTiFbbC600SeA38J2W'
